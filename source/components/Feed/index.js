@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 //Components
+import { withProfile } from '../HOC/withProfile';
 import StatusBar from 'components/StatusBar';
 import Composer from 'components/Composer';
 import Post from 'components/Post';
@@ -12,16 +13,8 @@ import Spinner from 'components/Spinner';
 import Styles from './styles.m.css';
 import { getUniqueID, delay } from 'instruments';
 
+@withProfile
 export default class Feed extends Component {
-    constructor() {
-        super();
-
-        this._createPost = this._createPost.bind(this);
-        this._setPostFetchingState = this._setPostFetchingState.bind(this);
-        this._likePost = this._likePost.bind(this);
-        this._removePost = this._removePost.bind(this);
-    }
-
     state = {
         posts: [
             { id: '123', comment: 'Hi there!', created: 1526825076849, likes: [] },
@@ -30,11 +23,11 @@ export default class Feed extends Component {
         isPostsFetching: false,
     };
 
-    _setPostFetchingState(state) {
+    _setPostFetchingState = (state) => {
         this.setState({ isPostsFetching: state });
-    }
+    };
 
-    async _createPost(comment) {
+    _createPost = async (comment) => {
         this._setPostFetchingState(true);
 
         const post = {
@@ -50,9 +43,9 @@ export default class Feed extends Component {
             posts:           [ post, ...posts ],
             isPostsFetching: false,
         }));
-    }
+    };
 
-    async _removePost(id) {
+    _removePost = async (id) => {
         const { posts } = this.state;
         this._setPostFetchingState(true);
 
@@ -64,9 +57,9 @@ export default class Feed extends Component {
             posts:           newPosts,
             isPostsFetching: false,
         });
-    }
+    };
 
-    async _likePost(id) {
+    _likePost = async (id) => {
         const { posts } = this.state;
         const { currentUserFirstName, currentUserLastName } = this.props;
         this._setPostFetchingState(true);
@@ -94,7 +87,7 @@ export default class Feed extends Component {
             posts:           newPosts,
             isPostsFetching: false,
         });
-    }
+    };
 
     render() {
         const { posts, isPostsFetching } = this.state;

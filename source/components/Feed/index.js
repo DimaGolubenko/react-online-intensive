@@ -153,7 +153,7 @@ export default class Feed extends Component {
         fromTo(composer, 1, { opacity: 0, rotationX: 50 }, { opacity: 1, rotationX: 0 });
     };
 
-    _animatePostmanEntering = (postman) => {
+    _animatePostmanEnter = (postman) => {
         fromTo(postman, 1, { right: 0 }, { right: 30 });
     };
 
@@ -204,8 +204,8 @@ export default class Feed extends Component {
                     appear
                     in
                     timeout = { 4000 }
-                    onEntered = { this._animatePostmanEntered }
-                    onEntering = { this._animatePostmanEntering }>
+                    onEnter = { this._animatePostmanEnter }
+                    onEntered = { this._animatePostmanEntered }>
                     <Postman />
                 </Transition>
                 <TransitionGroup>{postsJSX}</TransitionGroup>

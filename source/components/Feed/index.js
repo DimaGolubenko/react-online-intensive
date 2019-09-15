@@ -4,6 +4,7 @@ import { Transition, CSSTransition, TransitionGroup } from 'react-transition-gro
 import { fromTo } from 'gsap';
 
 //Components
+import Counter from 'components/Counter';
 import Catcher from 'components/Catcher';
 import { withProfile } from '../HOC/withProfile';
 import StatusBar from 'components/StatusBar';
@@ -200,6 +201,7 @@ export default class Feed extends Component {
                     onEnter = { this._animateComposerEnter }>
                     <Composer _createPost = { this._createPost } />
                 </Transition>
+                <Counter count = { postsJSX.length }/>
                 <Transition
                     appear
                     in

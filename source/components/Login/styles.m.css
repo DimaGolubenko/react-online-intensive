@@ -1,0 +1,22 @@
+.login {
+    margin-top: 50px;
+    text-align: center;
+
+    & button {
+        width: 58px;
+        height: 22px;
+        transition: background-color 0.2s ease-in;
+        border: 0;
+        border-radius: 2px;
+        outline: 0;
+        background-color: var(--paletteColor6);
+        color: var(--paletteColor2);
+        font-size: 12px;
+        letter-spacing: 1px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--paletteColor7);
+        }
+    }
+}
